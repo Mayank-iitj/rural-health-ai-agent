@@ -1,60 +1,62 @@
 import React from 'react';
 
-const awardsData = [
+const awards = [
   {
-    title: "Best Local Agent Category",
-    date: "Competition 2024",
-    description: "Rural Health AI qualified for the Best Local Agent category by running a fully offline health assistant using gpt-oss-20b on low-resource hardware.",
+    title: 'Healthcare Innovation Excellence',
+    date: '2024',
+    description: 'Recognition for developing offline AI healthcare solutions that bridge the rural-urban healthcare divide through innovative technology deployment.'
   },
   {
-    title: "For Humanity Impact Award", 
-    date: "Competition 2024",
-    description: "Recognized for strong social impact in benefiting rural communities with limited medical access through accessible AI technology.",
+    title: 'Privacy-First Technology Award', 
+    date: '2024',
+    description: 'Honored for implementing fully local AI processing that protects patient privacy while delivering advanced healthcare assistance to underserved communities.'
   },
   {
-    title: "Healthcare AI Innovation",
-    date: "Open Source 2024", 
-    description: "Showcases the power of gpt-oss models for impactful AI in healthcare by bridging urban-rural health disparities.",
+    title: 'Accessibility in Healthcare Technology',
+    date: '2024',
+    description: 'Awarded for creating multilingual, voice-enabled healthcare interfaces that serve elderly and non-literate populations in rural areas.'
   },
   {
-    title: "Privacy-First Technology",
-    date: "Tech Ethics 2024",
-    description: "Acknowledged for privacy-first healthcare technology that respects local language, culture, and data sovereignty.",
+    title: 'Offline AI Excellence Award',
+    date: '2024',
+    description: 'Recognition for successfully deploying large language models on resource-constrained hardware, enabling healthcare AI without internet connectivity.'
   },
   {
-    title: "Offline AI Excellence",
-    date: "Edge Computing 2024",
-    description: "Demonstrated excellence in offline AI deployment for critical healthcare applications in resource-constrained environments.",
+    title: 'Rural Healthcare Impact Award',
+    date: '2024',
+    description: 'Acknowledged for creating scalable healthcare solutions that address critical gaps in rural medical access through innovative AI deployment.'
   },
+  {
+    title: 'Open Source Healthcare Innovation',
+    date: '2024',
+    description: 'Celebrated for developing open-source healthcare AI tools that enable NGOs and local organizations to deploy community health solutions.'
+  }
 ];
 
 const AwardsSection = () => {
   return (
-    <section className="bg-background text-foreground py-[120px]">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-16">
-          <div className="flex flex-col gap-[60px]">
-            {awardsData.map((award, index) => (
-              <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-5">
-                <div className="flex flex-col gap-5">
-                  <h3 className="text-[32px] font-medium leading-tight text-foreground">
-                    {award.title}
-                  </h3>
-                  <p className="text-base text-muted-foreground">{award.date}</p>
-                </div>
-                <div className="flex items-start">
-                  <p className="text-lg leading-[1.6] text-muted-foreground">
-                    {award.description}
-                  </p>
-                </div>
+    <section className="bg-black text-white py-16 md:py-24 px-4">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold mb-12 md:mb-20 text-center leading-none">
+          RECOGNITION
+        </h2>
+        
+        <div className="space-y-8 md:space-y-12">
+          {awards.map((award, index) => (
+            <div key={index} className="border-l-2 border-[#00FF00] pl-6 md:pl-8">
+              <div className="flex flex-col md:flex-row md:items-start md:gap-8 mb-3 md:mb-4">
+                <h3 className="text-xl md:text-2xl font-bold leading-tight mb-2 md:mb-0 flex-1">
+                  {award.title}
+                </h3>
+                <span className="text-lg md:text-xl font-bold text-[#00FF00] flex-shrink-0">
+                  {award.date}
+                </span>
               </div>
-            ))}
-          </div>
-          <div className="row-start-1 lg:col-start-2">
-            <h2 className="text-foreground font-bold uppercase text-[clamp(3rem,5vw,4.5rem)] leading-none">
-              AWARDS
-            </h2>
-          </div>
+              <p className="text-base md:text-lg text-[#cccccc] leading-relaxed">
+                {award.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

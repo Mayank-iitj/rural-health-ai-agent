@@ -1,87 +1,87 @@
 import React from 'react';
 
-const servicesData = [
+const services = [
   {
     number: '01',
-    title: 'Offline Health Assistant',
-    description: 'Complete AI healthcare assistant running on gpt-oss-20b model without internet connectivity.',
+    title: 'Symptom Checker & Triage',
+    description: 'Multilingual symptom assessment with simple yes/no questions. Provides triage recommendations: self-care, clinic visit, or urgent hospital referral.'
   },
   {
     number: '02',
-    title: 'Symptom Triage',
-    description: 'Intelligent assessment of symptoms with severity evaluation and care recommendations.',
+    title: 'Offline Medical Knowledge',
+    description: 'Preloaded WHO guidelines, Ayushman Bharat protocols, and rural healthcare playbooks. Searchable medical database works without internet.'
   },
   {
     number: '03',
-    title: 'Voice Interaction',
-    description: 'Speech input and output support for users with low literacy in Hindi and local dialects.',
+    title: 'Voice Assistant Interface',
+    description: 'Full speech-to-text and text-to-speech in regional languages. Elderly and illiterate-friendly conversational interface.'
   },
   {
     number: '04',
-    title: 'Health Education',
-    description: 'Culturally appropriate daily health tips and interactive preventive care content.',
+    title: 'Visual Aid Mode',
+    description: 'Icon-driven interface with pictorial symptom representation for non-literate users. Simple visual cues for easy navigation.'
   },
   {
     number: '05',
-    title: 'Medical Records',
-    description: 'Secure local storage and management of patient health records with medication reminders.',
+    title: 'Medication Guidance',
+    description: 'Safe dosage information for common OTC medicines. Warns against antibiotic misuse and restricted drug interactions.'
   },
   {
     number: '06',
-    title: 'Sensor Integration',
-    description: 'Support for affordable health devices like blood pressure and glucose meters.',
+    title: 'Health Record Creation',
+    description: 'Automatic consultation logging with patient unique IDs. Voice or QR code based identification for low-literacy populations.'
   },
   {
     number: '07',
-    title: 'Emergency Detection',
-    description: 'Automatic identification of alarming symptoms with emergency care prompts.',
+    title: 'Medical Sensor Integration',
+    description: 'Bluetooth/USB integration with BP monitors, glucose meters, and pulse oximeters. AI interpretation of sensor data.'
   },
   {
     number: '08',
-    title: 'Low-Resource Hardware',
-    description: 'Optimized for modest compute resources including Raspberry Pi deployment.',
+    title: 'Maternal & Child Health',
+    description: 'Pregnancy tracking, vaccination calendars, and child development milestones with automated reminders and alerts.'
   },
   {
     number: '09',
-    title: 'Multilingual Support',
-    description: 'Natural language processing in Hindi and regional dialects for accessibility.',
+    title: 'Emergency Detection',
+    description: 'Critical symptom recognition with immediate escalation protocols. Automated emergency contact and location sharing.'
   },
   {
     number: '10',
-    title: 'Community Scalability',
-    description: 'Modular design scaling from individual households to community health centers.',
+    title: 'Health Analytics Dashboard',
+    description: 'Privacy-respecting community health statistics. Disease hotspot mapping and vaccination coverage analysis for health workers.'
   },
   {
     number: '11',
-    title: 'Open Source',
-    description: 'Fully open-source codebase with Apache 2.0 license and deployment guides.',
+    title: 'Gamified Health Education',
+    description: 'Interactive storytelling for children about hygiene, nutrition, and disease prevention. Reward-based learning system.'
   },
   {
     number: '12',
-    title: 'Privacy Compliance',
-    description: 'HIPAA-like data protection with full user control and local encryption.',
-  },
+    title: 'Privacy & Security Compliance',
+    description: 'End-to-end encrypted data sync, local processing, HIPAA compliance. No third-party data sharing or cloud logging.'
+  }
 ];
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="bg-background py-32 lg:py-40">
-      <div className="container">
-        <h2 className="text-center uppercase mb-20">
-          SERVICES
+    <section id="services" className="bg-black text-white py-16 md:py-24 px-4">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold mb-12 md:mb-20 text-center leading-none">
+          HEALTHCARE<span className="text-[#00FF00]">*</span>FEATURES
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-20">
-          {servicesData.map((service) => (
-            <div key={service.number} className="flex items-start gap-6">
-              <div 
-                className="text-primary font-bold leading-none -mt-1"
-                style={{ fontSize: 'clamp(3rem, 5vw, 4rem)' }}
-              >
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+          {services.map((service) => (
+            <div key={service.number} className="flex gap-4 md:gap-6 p-4 md:p-6 border border-gray-800 rounded-lg hover:border-[#00FF00] transition-colors duration-300">
+              <span className="text-3xl md:text-4xl font-bold text-[#00FF00] leading-none flex-shrink-0 mt-1">
                 {service.number}
-              </div>
-              <div className="pt-2">
-                <h3 className="mb-4">{service.title}</h3>
-                <p className="text-muted">
+              </span>
+              <div className="flex-1">
+                <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 leading-tight">
+                  {service.title}
+                </h3>
+                <p className="text-sm md:text-base text-[#cccccc] leading-relaxed">
                   {service.description}
                 </p>
               </div>

@@ -1,66 +1,53 @@
 import React from 'react';
 
-// Define the type for an individual about item
-interface AboutItem {
-  number: string;
-  title: string;
-  description: string;
-}
-
-// Array of about items data, ordered as they appear on the site
-const aboutItems: AboutItem[] = [
+const aboutItems = [
   {
-    number: "04",
-    title: "Privacy-First Healthcare Technology",
-    description: "All patient data remains locally stored, ensuring HIPAA-like compliance without internet dependency.",
+    number: '01',
+    title: 'Offline AI Healthcare',
+    description: 'Advanced AI models optimized to run on low-power devices like Raspberry Pi 4, providing healthcare guidance without internet connectivity.'
   },
   {
-    number: "03",
-    title: "Bridging the Healthcare Gap",
-    description: "Bringing advanced AI healthcare assistance to underserved rural communities with limited medical access.",
+    number: '02',
+    title: 'Cultural Awareness',
+    description: 'Integrated understanding of local remedies, cultural practices, and traditional medicine alongside modern healthcare protocols.'
   },
   {
-    number: "02",
-    title: "Culturally Aware AI Assistant",
-    description: "Supports Hindi and local dialects with voice interaction designed for low-literacy users.",
+    number: '03', 
+    title: 'Privacy-First Design',
+    description: 'All data processing happens locally. No cloud dependencies, no data selling, complete privacy protection for rural communities.'
   },
   {
-    number: "01",
-    title: "Offline AI-Powered Healthcare",
-    description: "Complete healthcare assistant running on gpt-oss-20b model without requiring internet connectivity.",
-  },
+    number: '04',
+    title: 'Accessibility Focus',
+    description: 'Voice interface in regional languages, visual aids for non-literate users, and simple yes/no questionnaire design.'
+  }
 ];
 
-// Reusable component for each item in the "About Us" section
-const AboutItemCard: React.FC<AboutItem> = ({ number, title, description }) => {
-  return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-[0.4fr_1fr] xl:grid-cols-[0.2fr_1fr] md:gap-10 items-start md:items-center">
-      <p className="font-bold text-primary text-[clamp(3rem,4vw,4rem)] leading-none -tracking-[0.02em]">
-        {number}
-      </p>
-      <div>
-        <h3 className="text-foreground font-medium text-[clamp(1.5rem,2.5vw,2rem)] leading-snug -tracking-[0.02em] mb-5 uppercase">
-          {title}
-        </h3>
-        <p className="text-muted max-w-md text-[clamp(1rem,1.1vw,1.125rem)] leading-relaxed">
-          {description}
-        </p>
-      </div>
-    </div>
-  );
-};
-
-// Main "About Us" section component
 const AboutSection = () => {
   return (
-    <section id="about" className="bg-background text-foreground pt-[120px] pb-[100px] px-5 md:px-20">
-      <div className="max-w-[1200px] mx-auto">
-        <h2 className="text-foreground font-bold text-[clamp(3rem,5vw,4.5rem)] uppercase mb-20 leading-tight -tracking-[0.02em]">
-          ABOUT*US
+    <section id="about" className="bg-black text-white py-16 md:py-24 px-4">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold mb-12 md:mb-20 text-center leading-none">
+          ABOUT<span className="text-[#00FF00]">*</span>RURAL<span className="text-[#00FF00]">*</span>HEALTH<span className="text-[#00FF00]">*</span>AI
         </h2>
-        <div className="grid grid-cols-1 gap-[60px]">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {aboutItems.map((item) => (
-            <AboutItemCard key={item.number} {...item} />
+            <div key={item.number} className="flex flex-col">
+              <div className="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
+                <span className="text-4xl md:text-6xl font-bold text-[#00FF00] leading-none flex-shrink-0">
+                  {item.number}
+                </span>
+                <div className="flex-1 pt-2">
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 leading-tight">
+                    {item.title}
+                  </h3>
+                  <p className="text-base md:text-lg text-[#cccccc] leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
