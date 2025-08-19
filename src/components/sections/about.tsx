@@ -25,24 +25,24 @@ const aboutItems = [
 
 const AboutSection = () => {
   return (
-    <section id="about" className="bg-black text-white py-16 md:py-24 px-4">
+    <section id="about" className="bg-black text-white py-12 sm:py-16 md:py-24 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold mb-12 md:mb-20 text-center leading-none">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold mb-8 sm:mb-12 md:mb-20 text-center leading-none">
           ABOUT<span className="text-[#00FF00]">*</span>RURAL<span className="text-[#00FF00]">*</span>HEALTH<span className="text-[#00FF00]">*</span>AI
         </h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
           {aboutItems.map((item) => (
             <div key={item.number} className="flex flex-col">
-              <div className="flex items-start gap-4 md:gap-6 mb-6 md:mb-8">
-                <span className="text-4xl md:text-6xl font-bold text-[#00FF00] leading-none flex-shrink-0">
+              <div className="flex items-start gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6 md:mb-8">
+                <span className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#00FF00] leading-none flex-shrink-0">
                   {item.number}
                 </span>
-                <div className="flex-1 pt-2">
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 leading-tight">
+                <div className="flex-1 pt-1 sm:pt-2">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight">
                     {item.title}
                   </h3>
-                  <p className="text-base md:text-lg text-[#cccccc] leading-relaxed">
+                  <p className="text-sm sm:text-base md:text-lg text-[#cccccc] leading-relaxed">
                     {item.description}
                   </p>
                 </div>

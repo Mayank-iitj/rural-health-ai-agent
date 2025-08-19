@@ -35,24 +35,24 @@ const awards = [
 
 const AwardsSection = () => {
   return (
-    <section className="bg-black text-white py-16 md:py-24 px-4">
+    <section className="bg-black text-white py-12 sm:py-16 md:py-24 px-4">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold mb-12 md:mb-20 text-center leading-none">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold mb-8 sm:mb-12 md:mb-20 text-center leading-none">
           RECOGNITION
         </h2>
         
-        <div className="space-y-8 md:space-y-12">
+        <div className="space-y-6 sm:space-y-8 md:space-y-12">
           {awards.map((award, index) => (
-            <div key={index} className="border-l-2 border-[#00FF00] pl-6 md:pl-8">
-              <div className="flex flex-col md:flex-row md:items-start md:gap-8 mb-3 md:mb-4">
-                <h3 className="text-xl md:text-2xl font-bold leading-tight mb-2 md:mb-0 flex-1">
+            <div key={index} className="border-l-2 border-[#00FF00] pl-4 sm:pl-6 md:pl-8">
+              <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4 md:gap-8 mb-2 sm:mb-3 md:mb-4">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold leading-tight flex-1">
                   {award.title}
                 </h3>
-                <span className="text-lg md:text-xl font-bold text-[#00FF00] flex-shrink-0">
+                <span className="text-base sm:text-lg md:text-xl font-bold text-[#00FF00] flex-shrink-0">
                   {award.date}
                 </span>
               </div>
-              <p className="text-base md:text-lg text-[#cccccc] leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-[#cccccc] leading-relaxed">
                 {award.description}
               </p>
             </div>

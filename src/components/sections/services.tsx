@@ -65,23 +65,23 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="bg-black text-white py-16 md:py-24 px-4">
+    <section id="services" className="bg-black text-white py-12 sm:py-16 md:py-24 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold mb-12 md:mb-20 text-center leading-none">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold mb-8 sm:mb-12 md:mb-20 text-center leading-none">
           HEALTHCARE<span className="text-[#00FF00]">*</span>FEATURES
         </h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           {services.map((service) => (
-            <div key={service.number} className="flex gap-4 md:gap-6 p-4 md:p-6 border border-gray-800 rounded-lg hover:border-[#00FF00] transition-colors duration-300">
-              <span className="text-3xl md:text-4xl font-bold text-[#00FF00] leading-none flex-shrink-0 mt-1">
+            <div key={service.number} className="flex gap-3 sm:gap-4 md:gap-6 p-3 sm:p-4 md:p-6 border border-gray-800 rounded-lg hover:border-[#00FF00] transition-colors duration-300">
+              <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#00FF00] leading-none flex-shrink-0 mt-1">
                 {service.number}
               </span>
-              <div className="flex-1">
-                <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 leading-tight">
+              <div className="flex-1 min-w-0">
+                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 md:mb-3 leading-tight">
                   {service.title}
                 </h3>
-                <p className="text-sm md:text-base text-[#cccccc] leading-relaxed">
+                <p className="text-xs sm:text-sm md:text-base text-[#cccccc] leading-relaxed">
                   {service.description}
                 </p>
               </div>

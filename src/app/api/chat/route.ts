@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const GOOGLE_AI_API_KEY = 'AIzaSyDvtW8nPxUgcugyTzgK043UkOv2tSR8L30';
-const GOOGLE_AI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:streamGenerateContent';
+const GOOGLE_AI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
 
 export async function POST(request: NextRequest) {
   try {
@@ -98,56 +98,43 @@ Current user message: "${message}"`;
       throw new Error(`Google AI API error: ${response.status}`);
     }
 
-    // Create a readable stream for the response
+    const data = await response.json();
+    
+    // Extract the response text
+    const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || 'माफ करें, मुझे आपका जवाब समझने में समस्या हुई। कृपया दोबारा कोशिश करें।';
+
+    // Create streaming response for compatibility with frontend
     const encoder = new TextEncoder();
     const stream = new ReadableStream({
-      async start(controller) {
+      start(controller) {
         try {
-          const reader = response.body?.getReader();
-          if (!reader) {
-            throw new Error('No response body');
-          }
-
-          const decoder = new TextDecoder();
-          let buffer = '';
-
-          while (true) {
-            const { done, value } = await reader.read();
-            
-            if (done) break;
-
-            buffer += decoder.decode(value, { stream: true });
-            const lines = buffer.split('\n');
-            buffer = lines.pop() || '';
-
-            for (const line of lines) {
-              if (line.trim() && line.startsWith('data: ')) {
-                try {
-                  const data = JSON.parse(line.slice(6));
-                  
-                  if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
-                    const content = data.candidates[0].content.parts[0].text;
-                    
-                    // Convert to OpenAI-compatible format for frontend
-                    const chunk = {
-                      choices: [{
-                        delta: {
-                          content: content
-                        }
-                      }]
-                    };
-                    
-                    controller.enqueue(encoder.encode(`data: ${JSON.stringify(chunk)}\n\n`));
-                  }
-                } catch (e) {
-                  console.error('Error parsing chunk:', e);
-                }
-              }
+          // Split response into chunks for streaming effect
+          const words = responseText.split(' ');
+          let currentChunk = '';
+          
+          const sendChunk = (index: number) => {
+            if (index >= words.length) {
+              controller.enqueue(encoder.encode('data: [DONE]\n\n'));
+              controller.close();
+              return;
             }
-          }
-
-          controller.enqueue(encoder.encode('data: [DONE]\n\n'));
-          controller.close();
+            
+            currentChunk += (index > 0 ? ' ' : '') + words[index];
+            
+            const chunk = {
+              choices: [{
+                delta: {
+                  content: index === 0 ? currentChunk : ` ${words[index]}`
+                }
+              }]
+            };
+            
+            controller.enqueue(encoder.encode(`data: ${JSON.stringify(chunk)}\n\n`));
+            
+            setTimeout(() => sendChunk(index + 1), 50); // 50ms delay between words
+          };
+          
+          sendChunk(0);
         } catch (error) {
           console.error('Stream error:', error);
           controller.error(error);
